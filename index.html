@@ -22,20 +22,67 @@
   
    <div class="row">
 	<div class="col">
-	 <p>{{ message }}</p>
-	 <input type="checkbox" name="nameOfChoice" v-model="editmode">
+	 <input type="checkbox" name="nameOfChoice" v-model="editmode"> Edit Mode <br/><br/>
 	</div>
    </div>
 	
    <div class="row" v-on:mousemove="mousemove">
-	<div class="col">
-         <svg id="drawing" v-on:mouseup="release" width="1200" height="900">
+	<div class="col-9">
+         <svg id="drawing" v-on:mouseup="release" width="900" height="600" style="border-style:solid;border-thickness:1px;border-color:black;">
 		  <rect v-on:mousedown="rectClick" v-on:mouseup="release" v-bind:x="[x]" v-bind:y="[y]" rx="2" ry="2" width="30" height="30"
 			style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
 		</svg>
     </div>
+	<div class="col-3">
+		<h5>Properties</h5>
+		<table  class="table">
+		  <tr>
+			<th>Property 1</th>
+			<td><input type="text" value="Value 1"/></td>
+		  </tr>
+		  <tr>
+			<th>Property 2</th>
+			<td><input type="text" value="Value 2"/></td>
+		  </tr>
+		</table>
+	</div>
    </div>
   </div>
+  
+   <div class="row">
+	<div class="col">
+	 <h3>Input tags</h3>
+	 <input type="text" name="first_name" value="" maxlength="100" /> Name
+	</div>
+   </div>
+   
+   <div class="row">
+	<div class="col">
+	 <h3>Output tags</h3>
+	 <input type="text" name="first_name" value="" maxlength="100" /> Name
+	</div>
+   </div>
+   
+   <div class="row">
+	<div class="col">
+	 <h3>Virtual tags</h3>
+	 <input type="text" name="first_name" value="" maxlength="100" /> Name
+	</div>
+   </div>
+  
+   <div class="row">
+	<div class="col">
+	 <h3>Equations</h3>
+	 <input type="text" name="first_name" value="" maxlength="100" /> Equation Input
+	</div>
+   </div>
+   
+   <div class="row">
+	<div class="col">
+	 <h3>Timers</h3>
+	 <input type="text" name="first_name" value="" maxlength="100" /> Equation Input
+	</div>
+   </div>
   
 </div>
 
