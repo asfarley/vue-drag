@@ -16,7 +16,7 @@
 <div class="container">
   <div class="row">
 	<div class="col">
-		<h1>Drag-n-drop demo</h1>
+		<h3>Drag-n-drop demo</h3>
 	</div>
   </div>
  
@@ -52,48 +52,30 @@
   
    <div class="row">
 	<div class="col">
-	 <h3>Icons</h3>
-	 <input type="text" name="icon_name" value="" maxlength="100" /> <label>Name</label>
+	 <h4>Icons</h4>
 	 <button type="button" v-on:click="createicon">Create</button>
 	</div>
    </div>
-  
-   <div class="row">
-	<div class="col">
-	 <h3>Input tags</h3>
-	 <input type="text" name="input_tag_name" value="" maxlength="100" /> <label>Name</label>
-	 <button>Create</button>
-	</div>
-   </div>
    
    <div class="row">
 	<div class="col">
-	 <h3>Output tags</h3>
-	 <input type="text" name="output_tag_name" value="" maxlength="100" /> <label>Name</label>
-	 <button>Create</button>
-	</div>
-   </div>
-   
-   <div class="row">
-	<div class="col">
-	 <h3>Virtual tags</h3>
-	 <input type="text" name="virtual_tag_name" value="" maxlength="100" /> <label>Name</label>
-	 <button>Create</button>
+	 <h4>Tags</h4>
+	 <input type="text" v-model="new_tag_name" maxlength="100" /> <label>Name</label>
+	 <button v-on:click="createtag" >Create</button>
 	</div>
    </div>
   
    <div class="row">
 	<div class="col">
-	 <h3>Equations</h3>
-	 <input type="text" name="equation_input" value="" size=80 /> <label>Equation Input</label>
-	 <button>Create</button>
+	 <h4>Equations</h4>
+	 <input type="text" v-model="new_equation_text" value="" size=80 /> <label>Equation Input</label>
+	 <button v-on:click="createequation" >Create</button>
 	</div>
    </div>
    
    <div class="row">
 	<div class="col">
-	 <h3>Timers</h3>
-	 <input type="text" name="timer_name" value="" maxlength="100" /> <label>Name</label>
+	 <h4>Timers</h4>
 	 <input type="text" name="timer_ms" value="" maxlength="100" /> <label>Time (ms)</label>
 	 <button>Create</button>
 	</div>
