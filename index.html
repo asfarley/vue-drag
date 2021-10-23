@@ -19,9 +19,7 @@
 		<h1>Drag-n-drop demo</h1>
 	</div>
   </div>
-  
-
-  
+ 
    <div class="row">
 	<div class="col">
 	 <input type="checkbox" name="nameOfChoice" v-model="editmode"> Edit Mode <br/><br/>
@@ -32,8 +30,8 @@
 	<div class="col-9">
          <svg id="drawing" v-on:mouseup="release" width="900" height="600" style="border-style:solid;border-thickness:1px;border-color:black;">
 		 
-		  <rect v-for="icon in icons" v-on:mousedown="rectClick(icon)" v-on:mouseup="release" v-bind:x="icon.x" v-bind:y="icon.y" rx="2" ry="2" width="30" height="30"
-			style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+		  <rect v-for="icon in icons" v-on:mousedown="rectClick(icon)" v-on:mouseup="release" v-bind:x="icon.x" v-bind:y="icon.y" v-bind:rx="iconStyles[icon.style].rx" v-bind:ry="iconStyles[icon.style].ry" v-bind:width="iconStyles[icon.style].width" v-bind:height="iconStyles[icon.style].height"
+			v-bind:style="iconStyles[icon.style].style" />
 			
 		</svg>
     </div>
@@ -51,7 +49,6 @@
 		</table>
 	</div>
    </div>
-
   
    <div class="row">
 	<div class="col">

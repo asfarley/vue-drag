@@ -1,14 +1,18 @@
-Vue.config.devtools = true
+Vue.config.devtools = true;
 
 var app = new Vue({
   el: '#app',
   data: {
 	bound: false,
 	editmode: true,
-	icons: [ {x: 50, y: 50, selected: false}, {x: 100, y: 100, selected: false} ],
+	icons: [ {x: 50, y: 50, selected: false, style: 0}, {x: 100, y: 100, selected: false, style: 1} ],
 	equations: [],
 	timers: [],
-	tags: []
+	tags: [],
+	iconStyles: [
+	{rx: 15, ry: 15, width: 30, height: 30, style: "fill:red;stroke:black;stroke-width:5;" },
+	{rx: 15, ry: 15, width: 30, height: 30, style: "fill:green;stroke:black;stroke-width:5;" }
+	]
   },
   methods: {
     rectClick: function (icon) {
@@ -43,7 +47,7 @@ var app = new Vue({
 	},
 	createicon: function() {
 		console.log("createicon");
-		let icon = {x: 10, y: 10, selected: false};
+		let icon = {x: 10, y: 10, selected: false, style: 0};
 		this.icons.push(icon);
 	}
   }
