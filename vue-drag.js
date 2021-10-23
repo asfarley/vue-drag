@@ -6,7 +6,7 @@ var app = new Vue({
 	bound: false,
 	editmode: true,
   icons: [ {x: 50, y: 50, rx: 15, ry: 15, width: 30, height: 30, selected: false, style: "fill:red;stroke:black;stroke-width:5;", tag: "NWR"}, {x: 100, y: 100, rx: 15, ry: 15, width: 30, height: 30, selected: false, style: "fill:green;stroke:black;stroke-width:5;", tag: ""} ],
-	equations: [{text:"this.tags.NWR = !this.tags.NWR"}],
+	equations: [{text:"NWR = !NWR"}],
 	interval: "",
 	timers: [],
 	tags: {"NWR": false},
@@ -68,7 +68,10 @@ var app = new Vue({
 	{
 		for (const eq of this.equations) 
 		{
-			eval(eq.text);
+			with(this.tags)
+			{
+				eval(eq.text);	
+			}
 		}
 	},
 	render: function()
