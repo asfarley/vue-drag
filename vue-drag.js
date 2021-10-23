@@ -5,30 +5,46 @@ var app = new Vue({
   data: {
 	bound: false,
 	editmode: true,
-	x: 50,
-	y: 50,
-	objects: [ {} ]
+	icons: [ {x: 50, y: 50, selected: false}, {x: 100, y: 100, selected: false} ],
+	equations: [],
+	timers: [],
+	tags: []
   },
   methods: {
-    rectClick: function () {
+    rectClick: function (icon) {
+		//console.log("rectClick");
 		if(this.editmode == true)
 		{
-			this.message = "Bound"
 			this.bound = true;
+			icon.selected = true;
 		}      
     },
 	release: function () {
-		this.message = "Unbound"
+		//console.log("release");
 		this.bound = false;
+		for(const icon of this.icons){
+			icon.selected = false;
+		}
 	},
-	mousemove: function (event) {
+	mousemove: function (ev) {
 		if(this.bound)
 		{
 			let drawing = document.getElementById('drawing');
 			let rect = drawing.getBoundingClientRect();
-			this.x = event.clientX - rect.left;
-			this.y = event.clientY - rect.top;	
+			
+			for(const icon of this.icons){
+				if(icon.selected)
+				{
+					icon.x = ev.clientX - rect.left;
+					icon.y = ev.clientY - rect.top;		
+				}
+			}
 		}
+	},
+	createicon: function() {
+		console.log("createicon");
+		let icon = {x: 10, y: 10, selected: false};
+		this.icons.push(icon);
 	}
   }
 })
