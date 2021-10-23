@@ -30,8 +30,8 @@
 	<div class="col-9">
          <svg id="drawing" v-on:mouseup="release" width="900" height="600" style="border-style:solid;border-thickness:1px;border-color:black;">
 		 
-		  <rect v-for="icon in icons" v-on:mousedown="rectClick(icon)" v-on:mouseup="release" v-bind:x="icon.x" v-bind:y="icon.y" v-bind:rx="iconStyles[icon.style].rx" v-bind:ry="iconStyles[icon.style].ry" v-bind:width="iconStyles[icon.style].width" v-bind:height="iconStyles[icon.style].height"
-			v-bind:style="iconStyles[icon.style].style" />
+		  <rect v-for="icon in icons" v-on:mousedown="rectClick(icon)" v-on:mouseup="release" v-bind:x="icon.x" v-bind:y="icon.y" v-bind:rx="icon.rx" v-bind:ry="icon.ry" v-bind:width="icon.width" v-bind:height="icon.height"
+			v-bind:style="icon.style" />
 			
 		</svg>
     </div>

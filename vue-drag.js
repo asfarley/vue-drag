@@ -5,11 +5,11 @@ var app = new Vue({
   data: {
 	bound: false,
 	editmode: true,
-	icons: [ {x: 50, y: 50, selected: false, style: 0}, {x: 100, y: 100, selected: false, style: 1} ],
-	equations: [],
+  icons: [ {x: 50, y: 50, rx: 15, ry: 15, width: 30, height: 30, selected: false, style: "fill:red;stroke:black;stroke-width:5;", tag: "NWR"}, {x: 100, y: 100, rx: 15, ry: 15, width: 30, height: 30, selected: false, style: "fill:green;stroke:black;stroke-width:5;", tag: ""} ],
+	equations: [{text:"this.tags.NWR = !this.tags.NWR"}],
 	interval: "",
 	timers: [],
-	tags: {},
+	tags: {"NWR": false},
 	new_tag_name: "",
 	new_equation_text: "",
 	new_timer_ms: 0,
@@ -21,6 +21,7 @@ var app = new Vue({
   mounted() {
 	  this.interval = setInterval(() => {
         this.execute();
+		this.render();
     }, 1000);
   },
   methods: {
@@ -67,12 +68,44 @@ var app = new Vue({
 	{
 		for (const eq of this.equations) 
 		{
-			let splitEq = eq.text.split("=");
-			let lhs = splitEq[0];
-			let rhs = splitEq[1];
-			console.log("RHS: " + rhs);
-			let rhsValue = eval(rhs);
-			this.tags[lhs] = rhsValue;	
+			eval(eq.text);
+		}
+	},
+	render: function()
+	{
+		for(const icon of this.icons)
+		{
+			if(icon.tag == "")
+			{
+				continue;
+			}
+			
+			if(!(icon.tag in this.tags))
+			{
+				continue;
+			}
+			
+			let val = this.tags[icon.tag];
+			
+			if(val == false)
+			{
+				let style = this.iconStyles[0];
+				icon.rx = style.rx;
+				icon.ry = style.ry;
+				icon.width = style.width;
+				icon.height = style.height;
+				icon.style = style.style;
+			}
+			
+			if(val == true)
+			{
+				let style = this.iconStyles[1];
+				icon.rx = style.rx;
+				icon.ry = style.ry;
+				icon.width = style.width;
+				icon.height = style.height;
+				icon.style = style.style;
+			}
 		}
 	}
   }
